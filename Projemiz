@@ -1,4 +1,4 @@
-#include <stdio.h>                       /* aciklama yapilmayan satirlar raporda detaylica aciklanmistir.*/
+#include <stdio.h>                     
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
@@ -6,7 +6,7 @@
 #include <ctype.h>
 #include <dos.h>
 #include <dir.h>
-#include <windows.h> // bazi kutuphaneler gorselligi arttirmak icin eklenmistir.
+#include <windows.h> 
 
 float calculated_frequencies[20];// bigram ve trigramlarin frekanslarinin atandigi veri kumesi.
 float distances [2]={0,0};
@@ -219,7 +219,6 @@ void calculate_frequencies_tri(char str[])
     printf("                              }\n");
 
 
-
 }
 
 void calculate_distances()
@@ -268,38 +267,20 @@ void detect_lang()  // Bu fonksiyon metnin hangi dilde yazildigini bulur.
         distances[1]=0; // sonsuz dongu icin sifirlanir.
 }
 
-void SetColor(int ForgC)  // estetik gorunum icin yazilmistir.
+void SetColor(int ForgC) 
 {
 	 WORD wColor;
 
       HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
       CONSOLE_SCREEN_BUFFER_INFO csbi;
 
-                       //We use csbi for the wAttributes word.
+                   
      if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
-     {
-                 //Mask out all but the background attribute, and add in the forgournd    color
+     {             
           wColor = (csbi.wAttributes & 0xF0) + (ForgC & 0x0F);
           SetConsoleTextAttribute(hStdOut, wColor);
      }
      return;
 }
-/*
-BLACK	     0
-BLUE	     1
-GREEN	     2
-CYAN	     3
-RED	         4
-MAGENTA      5  // purple
-BROWN	     6
-LIGHTGRAY	 7
-DARKGRAY	 8
-LIGHTBLUE	 9
-LIGHTGREEN	 10
-LIGHTCYAN	 11
-LIGHTRED	 12
-LIGHTMAGENTA 13
-YELLOW	     14
-WHITE	     15
-*/
+
 
